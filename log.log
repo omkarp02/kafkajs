@@ -1,0 +1,2 @@
+{"extra":{"groupId":"lead-group","logger":"kafkajs","timestamp":"2023-08-18T10:04:39.679Z"},"level":"info","message":"Starting"}
+{"extra":{"duration":3210,"groupId":"lead-group","groupProtocol":"RoundRobinAssigner","isLeader":true,"leaderId":"my-app-74b97894-68d4-49cd-b14d-fb965b2810ce","logger":"kafkajs","memberAssignment":{"Lead":[0,1]},"memberId":"my-app-74b97894-68d4-49cd-b14d-fb965b2810ce","timestamp":"2023-08-18T10:04:42.907Z"},"level":"info","message":"Consumer has joined the group"}

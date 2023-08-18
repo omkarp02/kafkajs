@@ -1,10 +1,7 @@
-import { Kafka } from "kafkajs";
+import { kafka } from "./config.js";
 import addMessageToQueue from "./producer.js";
 
-const kafka = new Kafka({
-  clientId: "my-app",
-  brokers: ["localhost:29092"],
-});
+
 
 async function consumeMessageFromUserTopic() {
   try {

@@ -1,9 +1,5 @@
-import { Kafka } from "kafkajs";
+import { kafka } from "./config.js";
 
-const kafka = new Kafka({
-  clientId: "my-app",
-  brokers: ["localhost:29092"],
-});
 
 const admin = kafka.admin();
 await admin.connect();
@@ -56,6 +52,10 @@ async function getNumberOfPartitions(topicName) {
 
   return partitions;
 }
+
+createTopics('Lead', 2)
+createTopics('Retry', 1)
+createTopics('Dead', 1)
 
 
 listTopics()

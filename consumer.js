@@ -1,11 +1,7 @@
-import { Kafka } from "kafkajs";
 import sendEmail from "./utils/sendEmail.js";
 import addMessageToQueue from "./producer.js";
+import { kafka } from "./config.js";
 
-const kafka = new Kafka({
-  clientId: "my-app",
-  brokers: ["localhost:29092"],
-});
 
 async function consumeMessageFromUserTopic() {
   try {
@@ -28,7 +24,6 @@ async function consumeMessageFromUserTopic() {
 
           await sendEmail({msg: `${msg} ${message.offset}`, email: 'omkar.pawar@iorta.in'})
         } catch (error) {
-          console.log(error)
           if (msg.noOfRetriesCount <= 5) {
             await addMessageToQueue(msg, "Retry", 0);
           } else {

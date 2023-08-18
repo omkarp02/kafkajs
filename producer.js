@@ -1,9 +1,5 @@
-import { Kafka } from "kafkajs";
+import { kafka } from "./config.js";
 
-const kafka = new Kafka({
-  clientId: "my-app",
-  brokers: ["localhost:29092"],
-});
 
 export default async function addMessageToQueue(msg, topic, partition) {
   try {

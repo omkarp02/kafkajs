@@ -21,23 +21,8 @@ jobs:
       - name: Install nx
         run: npm install -g nx
       - name: Identify affected projects
-        id: set-affected-output
         run: |
             my_var="Hello World"
             echo "Output [$my_var]"
             echo "my_var=$my_var" >> $GITHUB_OUTPUT
       - name: Example output call between steps
-        run: |
-          echo "Output [${{steps.set-affected-output.outputs.my_var}}]"
-
-  # test: 
-  #   runs-on: ubuntu-latest
-  #   steps: 
-  #     - name: Checkout Code
-  #       uses: actions/checkout@v4
-  #     - name: Install Nodejs
-  #       uses: actions/setup-node@v3
-  #       with: 
-  #         node-version: 18.16.0
-  #     - name: Install dependencies
-  #       run: npm ci

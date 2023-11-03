@@ -10,7 +10,7 @@ jobs:
   identify-affected:
     runs-on: ubuntu-latest
     outputs: 
-      affected: ${{ steps.set-affected-output.outputs }}
+      affected: ${{ steps.set-affected-output.outputs.affected }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -19,11 +19,11 @@ jobs:
         with: 
           node-version: 18.16.0
       - name: Identify affected projects
+        id: "set-affected-output"
         run: |
             affected="Hello World"
             echo "Output [$affected]"
             echo "affected=$affected" >> $GITHUB_OUTPUT
-            echo "::set-output name=affected::${{ steps.set-affected-output.outputs }}"
   my_second_job:
     needs: identify-affected
     runs-on: ubuntu-latest

@@ -24,7 +24,7 @@ jobs:
         id: set-affected-output
         run: |
           my_var="Hello World"
-          echo '::set-output name=affected::${{$my_var}}' ';'
+          echo "::set-output name=affected::${{$my_var}}"
 
   # test: 
   #   runs-on: ubuntu-latest

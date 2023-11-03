@@ -26,5 +26,6 @@ jobs:
             echo "::set-output name=affected::${{ steps.set-affected-output.outputs }}"
   my_second_job:
     needs: my_job
+    runs-on: ubuntu-latest
     steps:
       - run: echo affected [${{needs.set-affected-output.outputs.affected}}]

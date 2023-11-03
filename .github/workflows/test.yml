@@ -23,8 +23,12 @@ jobs:
       - name: Identify affected projects
         id: set-affected-output
         run: |
-          my_var="Hello World"
-          echo "::set-output name=affected::${{$my_var}}"
+            my_var="Hello World"
+            echo "Output [$my_var]"
+            echo "my_var=$my_var" >> $GITHUB_OUTPUT
+      - name: Example output call between steps
+        run: |
+          echo "Output [${{steps.set-affected-output.outputs.my_var}}]"
 
   # test: 
   #   runs-on: ubuntu-latest

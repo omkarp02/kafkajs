@@ -20,9 +20,7 @@ jobs:
           node-version: 18.16.0
       - name: Identify affected projects
         run: |
-            my_var="Hello World"
-            echo "Output [$my_var]"
-            echo "my_var=$my_var" >> $GITHUB_OUTPUT
-      - name: Set affected projects as output
-        id: set-affected-output
-        run: echo "::set-output name=affected::${{ steps.set-affected-output.outputs }}"
+            affected="Hello World"
+            echo "Output [$affected]"
+            echo "affected=$affected" >> $GITHUB_OUTPUT
+            echo "::set-output name=affected::${{ steps.set-affected-output.outputs }}"

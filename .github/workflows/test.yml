@@ -24,3 +24,7 @@ jobs:
             echo "Output [$affected]"
             echo "affected=$affected" >> $GITHUB_OUTPUT
             echo "::set-output name=affected::${{ steps.set-affected-output.outputs }}"
+  my_second_job:
+    needs: my_job
+    steps:
+      - run: echo affected [${{needs.set-affected-output.outputs.affected}}]

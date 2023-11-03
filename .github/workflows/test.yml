@@ -28,4 +28,4 @@ jobs:
         run: |
           my_var="Hello World"
           echo "Output $my_var"
-          echo "$(needs.job1.outputs.output2)"
+          echo "$OUTPUT1"

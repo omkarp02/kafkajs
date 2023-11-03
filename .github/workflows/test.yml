@@ -18,11 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with: 
           node-version: 18.16.0
-      - name: Install nx
-        run: npm install -g nx
       - name: Identify affected projects
         run: |
             my_var="Hello World"
             echo "Output [$my_var]"
             echo "my_var=$my_var" >> $GITHUB_OUTPUT
-      - name: Example output call between steps

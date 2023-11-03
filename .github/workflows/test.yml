@@ -23,3 +23,6 @@ jobs:
             my_var="Hello World"
             echo "Output [$my_var]"
             echo "my_var=$my_var" >> $GITHUB_OUTPUT
+      - name: Set affected projects as output
+        id: set-affected-output
+        run: echo "::set-output name=affected::${{ steps.set-affected-output.outputs }}"

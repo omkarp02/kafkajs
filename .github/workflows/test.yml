@@ -2,7 +2,7 @@ name: Test Project
 on: 
   push: 
     branches:
-      - dev
+      - main
     # paths-ignore:
     #   - '.github/workflows/*'
   workflow_dispatch:

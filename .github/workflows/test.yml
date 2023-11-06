@@ -2,29 +2,33 @@ name: Test Project
 on: 
   push: 
     branches:
-      - main
+      - dev
     # paths-ignore:
     #   - '.github/workflows/*'
   workflow_dispatch:
-jobs:
-  job1:
+jobs: 
+  identify-affected:
     runs-on: ubuntu-latest
-    # Map a step output to a job output
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      output2: ${{ steps.step2.outputs.test }}
+    outputs: 
+      affected: ${{ steps.set-affected-output.outputs.test }}
     steps:
-      - id: step1
-        run: echo "test=hello" >> "$GITHUB_OUTPUT"
-      - id: step2
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Install Nodejs
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 18.16.0
+      - name: Install nx
+        run: npm install -g nx
+      - name: Identify affected projects
+        id: set-affected-output
         run: echo "test=world" >> "$GITHUB_OUTPUT"
-  job2:
+  test: 
     runs-on: ubuntu-latest
-    needs: job1
+    needs: identify-affected
     steps:
       - env:
-          OUTPUT1: ${{needs.job1.outputs.output1}}
-          OUTPUT2: ${{needs.job1.outputs.output2}}
+          OUTPUT1: ${{needs.identify-affected.outputs.affected}}
         run: |
           my_var="Hello World"
           echo "Output $my_var"
